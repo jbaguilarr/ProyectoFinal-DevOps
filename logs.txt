@@ -1,0 +1,367 @@
+Started by user brruno aguilar
+[Pipeline] Start of Pipeline
+[Pipeline] stage
+[Pipeline] { (Clone Backend - DEV )
+[Pipeline] node
+Running on debian in /home/debian/jenkins_slave/workspace/FinalProjectDevOps
+[Pipeline] {
+[Pipeline] git
+The recommended git tool is: NONE
+No credentials specified
+Fetching changes from the remote Git repository
+Checking out Revision a2599567241bb06a307761dd998e10e596e2d9d9 (refs/remotes/origin/main)
+Commit message: "backend json server"
+ > git rev-parse --resolve-git-dir /home/debian/jenkins_slave/workspace/FinalProjectDevOps/.git # timeout=10
+ > git config remote.origin.url https://github.com/jbaguilarr/backend-json-server.git # timeout=10
+Fetching upstream changes from https://github.com/jbaguilarr/backend-json-server.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.30.2'
+ > git fetch --tags --force --progress -- https://github.com/jbaguilarr/backend-json-server.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f a2599567241bb06a307761dd998e10e596e2d9d9 # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D main # timeout=10
+ > git checkout -b main a2599567241bb06a307761dd998e10e596e2d9d9 # timeout=10
+ > git rev-list --no-walk a2599567241bb06a307761dd998e10e596e2d9d9 # timeout=10
+[Pipeline] echo
+Cloned Backend..
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build Backend - DEV)
+[Pipeline] node
+Running on debian in /home/debian/jenkins_slave/workspace/FinalProjectDevOps
+[Pipeline] {
+[Pipeline] sh
++ docker-compose up -d
+time="2022-12-02T16:57:32-05:00" level=warning msg="Found orphan containers ([finalprojectdevops-dev-1]) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up."
+Container finalprojectdevops-backend-1  Running
+[Pipeline] echo
+Build backend - DEV
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Clone Frontend - DEV)
+[Pipeline] node
+Running on debian in /home/debian/jenkins_slave/workspace/FinalProjectDevOps
+[Pipeline] {
+[Pipeline] git
+The recommended git tool is: NONE
+No credentials specified
+Fetching changes from the remote Git repository
+ > git rev-parse --resolve-git-dir /home/debian/jenkins_slave/workspace/FinalProjectDevOps/.git # timeout=10
+ > git config remote.origin.url https://github.com/jbaguilarr/ProyectoFinalVue-FrontEnd.git # timeout=10
+Fetching upstream changes from https://github.com/jbaguilarr/ProyectoFinalVue-FrontEnd.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.30.2'
+ > git fetch --tags --force --progress -- https://github.com/jbaguilarr/ProyectoFinalVue-FrontEnd.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+Checking out Revision 2698d968a57675c5e9763e3c259d78849986c5ac (refs/remotes/origin/main)
+Commit message: "proyecto vue final moudulo 8"
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 2698d968a57675c5e9763e3c259d78849986c5ac # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D main # timeout=10
+ > git checkout -b main 2698d968a57675c5e9763e3c259d78849986c5ac # timeout=10
+ > git rev-list --no-walk 2698d968a57675c5e9763e3c259d78849986c5ac # timeout=10
+[Pipeline] echo
+Cloned Frontend - DEV
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build Frontend - DEV)
+[Pipeline] node
+Running on debian in /home/debian/jenkins_slave/workspace/FinalProjectDevOps
+[Pipeline] {
+[Pipeline] sh
++ docker-compose up -d dev
+time="2022-12-02T16:57:34-05:00" level=warning msg="Found orphan containers ([finalprojectdevops-backend-1]) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up."
+Container finalprojectdevops-dev-1  Created
+Container finalprojectdevops-dev-1  Starting
+Container finalprojectdevops-dev-1  Started
+[Pipeline] echo
+Build frontend - DEV
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Clone Frontend - QA)
+[Pipeline] node
+Running on debian in /home/debian/jenkins_slave/workspace/FinalProjectDevOps
+[Pipeline] {
+[Pipeline] git
+The recommended git tool is: NONE
+No credentials specified
+Fetching changes from the remote Git repository
+Checking out Revision 2698d968a57675c5e9763e3c259d78849986c5ac (refs/remotes/origin/main)
+Commit message: "proyecto vue final moudulo 8"
+[Pipeline] echo
+Cloned Frontend - QA
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Run Test - QA)
+[Pipeline] node
+Running on debian in /home/debian/jenkins_slave/workspace/FinalProjectDevOps
+[Pipeline] {
+[Pipeline] sh
+ > git rev-parse --resolve-git-dir /home/debian/jenkins_slave/workspace/FinalProjectDevOps/.git # timeout=10
+ > git config remote.origin.url https://github.com/jbaguilarr/ProyectoFinalVue-FrontEnd.git # timeout=10
+Fetching upstream changes from https://github.com/jbaguilarr/ProyectoFinalVue-FrontEnd.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.30.2'
+ > git fetch --tags --force --progress -- https://github.com/jbaguilarr/ProyectoFinalVue-FrontEnd.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 2698d968a57675c5e9763e3c259d78849986c5ac # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D main # timeout=10
+ > git checkout -b main 2698d968a57675c5e9763e3c259d78849986c5ac # timeout=10
++ docker-compose up -d test
+#1 [internal] load build definition from Dockerfile.test
+#1 transferring dockerfile: 180B done
+#1 DONE 0.0s
+
+#2 [internal] load .dockerignore
+#2 transferring context: 2B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/node:16.18-alpine3.15
+#3 DONE 1.0s
+
+#4 [1/5] FROM docker.io/library/node:16.18-alpine3.15@sha256:ecf74556cdeee48382e555a377ddb12d36161bd33349dc79290f733f763df711
+#4 CACHED
+
+#5 [2/5] WORKDIR /test
+#5 DONE 0.1s
+
+#6 [internal] load build context
+#6 transferring context: 66.63kB 0.0s done
+#6 ...
+
+#7 [3/5] COPY package.json .
+#7 DONE 0.1s
+
+#8 [4/5] RUN yarn install
+#8 0.405 yarn install v1.22.19
+#8 0.447 info No lockfile found.
+#8 0.457 [1/4] Resolving packages...
+#8 21.92 warning @vue/cli-plugin-unit-jest > jest > jest-cli > jest-config > jest-environment-jsdom > jsdom > w3c-hr-time@1.0.2: Use your platform's native performance.now() and performance.timeOrigin.
+#8 35.56 warning @vue/cli-service > cssnano > cssnano-preset-default > postcss-svgo > svgo > stable@0.1.8: Modern JS already guarantees Array#sort() is a stable sort, so this library is deprecated. See the compatibility table on MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#browser_compatibility
+#8 43.56 [2/4] Fetching packages...
+#8 71.04 [3/4] Linking dependencies...
+#8 71.05 warning " > @vue/cli-plugin-unit-jest@5.0.8" has incorrect peer dependency "jest@^27.1.0".
+#8 71.05 warning " > @vue/vue3-jest@27.0.0" has incorrect peer dependency "jest@27.x".
+#8 86.75 [4/4] Building fresh packages...
+#8 87.33 success Saved lockfile.
+#8 87.34 Done in 86.94s.
+#8 DONE 87.5s
+
+#9 [5/5] COPY . .
+#9 DONE 0.1s
+
+#10 exporting to image
+#10 exporting layers
+#10 exporting layers 6.3s done
+#10 writing image sha256:604650e631b3777e98ea630397914db35b171c439792ab140e73d757efbc873c done
+#10 naming to docker.io/library/finalprojectdevops-test done
+#10 DONE 6.3s
+
+#6 [internal] load build context
+
+Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
+time="2022-12-02T16:59:11-05:00" level=warning msg="Found orphan containers ([finalprojectdevops-backend-1]) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up."
+Container finalprojectdevops-test-1  Creating
+Container finalprojectdevops-test-1  Created
+Container finalprojectdevops-test-1  Starting
+Container finalprojectdevops-test-1  Started
+[Pipeline] echo
+Build tests ..
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Clone Backend - PROD)
+[Pipeline] node
+Running on debian in /home/debian/jenkins_slave/workspace/FinalProjectDevOps
+[Pipeline] {
+[Pipeline] git
+The recommended git tool is: NONE
+No credentials specified
+Fetching changes from the remote Git repository
+Checking out Revision a2599567241bb06a307761dd998e10e596e2d9d9 (refs/remotes/origin/main)
+Commit message: "backend json server"
+[Pipeline] echo
+Cloned Backend - PROD
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build Backend - PROD)
+[Pipeline] node
+Running on debian in /home/debian/jenkins_slave/workspace/FinalProjectDevOps
+[Pipeline] {
+[Pipeline] sh
+ > git rev-parse --resolve-git-dir /home/debian/jenkins_slave/workspace/FinalProjectDevOps/.git # timeout=10
+ > git config remote.origin.url https://github.com/jbaguilarr/backend-json-server.git # timeout=10
+Fetching upstream changes from https://github.com/jbaguilarr/backend-json-server.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.30.2'
+ > git fetch --tags --force --progress -- https://github.com/jbaguilarr/backend-json-server.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f a2599567241bb06a307761dd998e10e596e2d9d9 # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D main # timeout=10
+ > git checkout -b main a2599567241bb06a307761dd998e10e596e2d9d9 # timeout=10
++ docker-compose up -d
+time="2022-12-02T16:59:13-05:00" level=warning msg="Found orphan containers ([finalprojectdevops-test-1 finalprojectdevops-dev-1]) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up."
+Container finalprojectdevops-backend-1  Running
+[Pipeline] echo
+Build backend - PROD
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Clone Frontend - PROD)
+[Pipeline] node
+Running on debian in /home/debian/jenkins_slave/workspace/FinalProjectDevOps
+[Pipeline] {
+[Pipeline] git
+The recommended git tool is: NONE
+No credentials specified
+Fetching changes from the remote Git repository
+Checking out Revision 2698d968a57675c5e9763e3c259d78849986c5ac (refs/remotes/origin/main)
+Commit message: "proyecto vue final moudulo 8"
+[Pipeline] echo
+Cloned Frontend - PROD
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build FrontEnd - PROD)
+[Pipeline] node
+Running on debian in /home/debian/jenkins_slave/workspace/FinalProjectDevOps
+[Pipeline] {
+[Pipeline] sh
+ > git rev-parse --resolve-git-dir /home/debian/jenkins_slave/workspace/FinalProjectDevOps/.git # timeout=10
+ > git config remote.origin.url https://github.com/jbaguilarr/ProyectoFinalVue-FrontEnd.git # timeout=10
+Fetching upstream changes from https://github.com/jbaguilarr/ProyectoFinalVue-FrontEnd.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.30.2'
+ > git fetch --tags --force --progress -- https://github.com/jbaguilarr/ProyectoFinalVue-FrontEnd.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 2698d968a57675c5e9763e3c259d78849986c5ac # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D main # timeout=10
+ > git checkout -b main 2698d968a57675c5e9763e3c259d78849986c5ac # timeout=10
++ docker-compose up -d vue-app
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 273B done
+#1 DONE 0.0s
+
+#2 [internal] load .dockerignore
+#2 transferring context: 2B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/node:16.18-alpine3.15
+#3 DONE 0.5s
+
+#4 [internal] load metadata for docker.io/library/nginx:1.19.0-alpine
+#4 DONE 1.0s
+
+#5 [build 1/6] FROM docker.io/library/node:16.18-alpine3.15@sha256:ecf74556cdeee48382e555a377ddb12d36161bd33349dc79290f733f763df711
+#5 DONE 0.0s
+
+#6 [stage-1 1/2] FROM docker.io/library/nginx:1.19.0-alpine@sha256:17ba9c1ca3dbea0b44f7c890862161c4976f66ebb33e8fdd4452417aebba8e64
+#6 DONE 0.0s
+
+#7 [internal] load build context
+#7 transferring context: 68.04kB 0.0s done
+#7 DONE 0.0s
+
+#8 [build 2/6] WORKDIR /app
+#8 CACHED
+
+#9 [build 3/6] COPY package.json .
+#9 CACHED
+
+#10 [build 4/6] RUN yarn install
+#10 CACHED
+
+#11 [build 5/6] COPY . .
+#11 DONE 0.1s
+
+#12 [build 6/6] RUN yarn run build
+#12 0.406 yarn run v1.22.19
+#12 0.454 $ vue-cli-service build
+#12 1.281 All browser targets in the browserslist configuration have supported ES module.
+#12 1.281 Therefore we don't build two separate bundles for differential loading.
+#12 1.281 
+#12 1.319 
+#12 1.321 -  Building for production...
+#12 18.12  DONE  Compiled successfully in 14779ms9:59:34 PM
+#12 18.12 
+#12 18.15   File                                 Size               Gzipped
+#12 18.15 
+#12 18.15   dist/js/chunk-vendors.2123eac8.js    113.66 KiB         40.90 KiB
+#12 18.15   dist/js/app.e3e5de20.js              5.98 KiB           2.45 KiB
+#12 18.15   dist/js/321.b095469f.js              4.14 KiB           1.45 KiB
+#12 18.15   dist/js/519.8241f787.js              4.04 KiB           1.34 KiB
+#12 18.15   dist/js/633.f9fbdead.js              4.01 KiB           1.36 KiB
+#12 18.15   dist/js/731.df7f6be8.js              3.53 KiB           1.36 KiB
+#12 18.15   dist/js/611.d0e4caa3.js              2.83 KiB           1.07 KiB
+#12 18.15   dist/js/738.1ee7c0f2.js              2.48 KiB           1.04 KiB
+#12 18.15   dist/js/642.0b27b9cd.js              0.43 KiB           0.32 KiB
+#12 18.15   dist/css/app.48eb9280.css            0.00 KiB           0.02 KiB
+#12 18.15 
+#12 18.15   Images and other types of assets omitted.
+#12 18.15   Build at: 2022-12-02T21:59:35.036Z - Hash: abf0a0f97083a67e - Time: 14779ms
+#12 18.15 
+#12 18.15  DONE  Build complete. The dist directory is ready to be deployed.
+#12 18.15  INFO  Check out deployment instructions at https://cli.vuejs.org/guide/deployment.html
+#12 18.15        
+#12 18.17 Done in 17.77s.
+#12 DONE 18.2s
+
+#6 [stage-1 1/2] FROM docker.io/library/nginx:1.19.0-alpine@sha256:17ba9c1ca3dbea0b44f7c890862161c4976f66ebb33e8fdd4452417aebba8e64
+#6 CACHED
+
+#13 [stage-1 2/2] COPY --from=build /app/dist /usr/share/nginx/html
+#13 DONE 0.1s
+
+#14 exporting to image
+#14 exporting layers 0.1s done
+#14 writing image sha256:51a54a78326db053eb5c62c7cf364e30927387a3534031dafca6e9f1ca9a8db4 done
+#14 naming to docker.io/library/finalprojectdevops-vue-app done
+#14 DONE 0.1s
+
+Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
+time="2022-12-02T16:59:35-05:00" level=warning msg="Found orphan containers ([finalprojectdevops-backend-1]) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up."
+Container finalprojectdevops-vue-app-1  Creating
+Container finalprojectdevops-vue-app-1  Created
+Container finalprojectdevops-vue-app-1  Starting
+Container finalprojectdevops-vue-app-1  Started
+[Pipeline] echo
+Build FrontEnd - PROD
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] End of Pipeline
+Finished: SUCCESS
